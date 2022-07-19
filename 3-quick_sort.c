@@ -1,87 +1,58 @@
 #include "sort.h"
 
 /**
- * swap - change position between 2 position of
- * an array and print the array
+ * quick_sort - function that sorts an array
+ * of integers in ascending order using the
+ * quick sort algorithm
  *
- * @array: array to be sorted
- * @first: lowest position
- * @last: highest position
- * @size: size of array
- * Return: Void.
- */
-void swap(int *array, int first, int last, size_t size)
-{
-	int temp, value;
-
-	value = array[first];
-	temp = array[last];
-	array[last] = value;
-	array[first] = temp;
-	print_array(array, size);
-}
-/**
- * part - find partition position or pivot of array
- *
- * @array: array to be sorted
- * @first: lowest position
- * @last: highest position
- * @size: size of array 
- * Return: pivot index
- */
-int part(int *array, int first, int last, size_t size)
-{
-	int pivot = array[last];
-	int i = first - 1;
-	int j;
-
-	for (j = first; j <= last - 1; j++)
-	{
-		if (array[j] < pivot)
-		{
-			i++;
-			if (i < j)
-				swap(array, i, j, size);
-		}
-	}
-	if (array[i + 1] > array[last])
-		swap(array, i + 1, last, size);
-	return (i + 1);
-}
-
-/**
- * sorting - sorts an array of integers in
- * ascending order
- *
- * @array: array to be sorted
- * @first: lowest position
- * @last: highest position
- * @size: size of array
- * Return: Void.
- */
-void sorting(int *array, int first, int last, size_t size)
-{
-	int pivot;
-
-	if (first < last)
-	{
-		pivot = part(array, first, last, size);
-		sorting(array, first, pivot - 1, size);
-		sorting(array, pivot + 1, last, size);
-	}
-}
-
-/**
- * quick_sort - sorts an array of integers in
- * ascending order using the quick sort algorithm
- *
- * @array: array to be sorted
- * @size: size of array
- * Return: Void
+ * @array: input arrray
+ * @size: size of the array
+ * Return: no return
  */
 void quick_sort(int *array, size_t size)
 {
-	int last = size - 1;
+	_qsort(array, 0, size - 1, size);
+}
+/**
+ * _qsort - auxiliar function for the
+ * quick_sort function
+ * @a: input arrray
+ * @low: index for the first element
+ * @high: index for the last element
+ * @size: size of the array
+ * Return: no return
+ */
+void _qsort(int *a, int low, int high, int size)
+{
+	int p, w, i;
+	int tmp;
 
-	sorting(array, 0, last, size);
+	if (low < high)
+	{
+		p = high;
+		w = low;
+		for (i = low; i < high; i++)
+		{
+			if (a[i] < a[p])
+			{
+				if (i != w)
+				{
+					tmp = a[i];
+					a[i] = a[w];
+					a[w] = tmp;
+					print_array(a, size);
+				}
+				w++;
+			}
+		}
+		if (w != p && a[w] != a[p])
+		{
+			tmp = a[w];
+			a[w] = a[p];
+			a[p] = tmp;
+			print_array(a, size);
+		}
+		_qsort(a, low, w - 1, size);
+		_qsort(a, w + 1, high, size);
+	}
 }
