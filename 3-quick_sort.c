@@ -3,11 +3,11 @@
 /**
  * swap - change position between 2 position of
  * an array and print the array
+ *
  * @array: array to be sorted
  * @first: lowest position
  * @last: highest position
  * @size: size of array
- *
  * Return: Void.
  */
 void swap(int *array, int first, int last, size_t size)
@@ -22,11 +22,11 @@ void swap(int *array, int first, int last, size_t size)
 }
 /**
  * part - find partition position or pivot of array
+ *
  * @array: array to be sorted
  * @first: lowest position
  * @last: highest position
- * @size: size of array
- * 
+ * @size: size of array 
  * Return: pivot index
  */
 int part(int *array, int first, int last, size_t size)
@@ -50,12 +50,13 @@ int part(int *array, int first, int last, size_t size)
 }
 
 /**
- * sorting - sorts an array of integers in ascending order
+ * sorting - sorts an array of integers in
+ * ascending order
+ *
  * @array: array to be sorted
  * @first: lowest position
  * @last: highest position
  * @size: size of array
- *
  * Return: Void.
  */
 void sorting(int *array, int first, int last, size_t size)
@@ -71,11 +72,11 @@ void sorting(int *array, int first, int last, size_t size)
 }
 
 /**
- * quick_sort - sorts an array of integers in ascending order
- * using the quick sort algorithm
+ * quick_sort - sorts an array of integers in
+ * ascending order using the quick sort algorithm
+ *
  * @array: array to be sorted
  * @size: size of array
- *
  * Return: Void
  */
 void quick_sort(int *array, size_t size)
